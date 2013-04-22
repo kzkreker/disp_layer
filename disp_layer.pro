@@ -8,7 +8,7 @@ QT       += core gui xml network sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = patrol_layer
+TARGET = disp_layer
 TEMPLATE = app
 
 INCLUDEPATH += . ../libmaia/
@@ -19,10 +19,14 @@ LIBS += ../libmaia/libmaia.a
 SOURCES += main.cpp\
         layerwindow.cpp \
     server.cpp \
-    database.cpp
+    database.cpp \
+    cstatistic.cpp \
+    gpsdata.cpp
 
 HEADERS  += layerwindow.h \
     server.h \
-    database.h
+    database.h \
+    cstatistic.h \
+    gpsdata.h
 
 FORMS    += layerwindow.ui

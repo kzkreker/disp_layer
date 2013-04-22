@@ -5,7 +5,8 @@
 #include <QtSql>
 #include <QDebug>
 #include <QDate>
-
+#include "database.h"
+#include "gpsdata.h"
 class DataBase : public QObject
 {
     Q_OBJECT
@@ -15,16 +16,17 @@ public:
 signals:
 
 public slots:
-    void addGPScordinaes(QString lat,QString lon, QString dateCV,
-                         QString speed, QString course,  QString id);
 
+    QVariant getActiveGps(QString SeatchData);
     void closeConnection();
     //void readSettings();
     //void addSettings();
     bool activateConnection();
-    void newTable(QString id);
+    void createTables();
 
-    
+
+private:
+
 };
 
 #endif // DATABASE_H

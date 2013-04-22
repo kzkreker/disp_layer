@@ -1,11 +1,13 @@
 #include "server.h"
 
+
 Server::Server(QObject* parent) : QObject(parent) {
 
-    server = new MaiaXmlRpcServer(8082, this);
-    server->addMethod("examples.nix", this, "nix");
-    server->addMethod("transport.curentGPSResiv", this, "curentGPSResiv");
+    server = new MaiaXmlRpcServer(8083, this);
+    server->addMethod("transport.nix", this, "nix");
+    server->addMethod("transport.sendActiveGPS", this, "sendActiveGPS");
     connector.activateConnection();
+    connector.createTables();
 
 }
 
@@ -19,10 +21,8 @@ void Server::nix() {
 ////////////////////////////////////////////////////////
 ///
 ////////////////////////////////////////////////////////
-bool Server::curentGPSResiv(QString lat, QString lon,QString dateCV, QString speed, QString course, QString id)
+QVariant Server::sendActiveGPS(QString SeatchData)
 {
-    qDebug()<<dateCV;
-    qDebug()<<id;
-    connector.addGPScordinaes(lat,lon, dateCV, speed,course , id);
-    return true;
+    qDebug()<<SeatchData;
+    return connector.getActiveGps(SeatchData);
 }
