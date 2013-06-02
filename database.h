@@ -16,11 +16,14 @@ public:
 signals:
 
 public slots:
-
+    //работа с БД
     QVariant getActiveGps(QString SeatchData);
-    void closeConnection();
+    QVariant getGpsTrack(QString dataStart, QString dataEnd, QString carID);
+    QVariant getPicSensors(QString dataStart, QString dataEnd, QString carID);
+    //служебные функции
     //void readSettings();
     //void addSettings();
+    void closeConnection();
     bool activateConnection();
     void createTables();
 

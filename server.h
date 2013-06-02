@@ -15,8 +15,9 @@ class Server : public QObject {
     signals:
 
     private slots:
-        void nix();
         QVariant sendActiveGPS(QString id);
+        QVariant getGPSTrack(QString dataStart, QString dataEnd, QString carID);
+        QVariant getPICSensors(QString dataStart, QString dataEnd, QString carID);
 
     private:
         MaiaXmlRpcServer *server;
